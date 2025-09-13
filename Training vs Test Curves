@@ -1,0 +1,27 @@
+import matplotlib.pyplot as plt
+import numpy as np
+# Simulated epochs
+epochs = np.arange(1, 51)
+# Small MLP (Underfit)
+train_small = 1.0 - 0.1 * np.log(epochs) # stays high
+test_small = train_small + 0.05 # small gap
+# Medium MLP (Good Fit)
+train_medium = 0.6 * np.exp(-0.05*epochs) # decreases smoothly
+test_medium = train_medium + 0.02 # small gap
+# Huge MLP (Overfit)
+train_huge = 0.6 * np.exp(-0.1*epochs) # very low
+test_huge = 0.6 * np.exp(-0.05*epochs) + 0.2*np.log(epochs)
+plt.figure(figsize=(10,6))
+# Plot all curves
+plt.plot(epochs, train_small, 'r-', label='Small MLP Train (Underfit)')
+plt.plot(epochs, test_small, 'r--', label='Small MLP Test')
+plt.plot(epochs, train_medium, 'g-', label='Medium MLP Train (Good Fit)')
+plt.plot(epochs, test_medium, 'g--', label='Medium MLP Test')
+plt.plot(epochs, train_huge, 'b-', label='Huge MLP Train (Overfit)')
+plt.plot(epochs, test_huge, 'b--', label='Huge MLP Test')
+plt.xlabel("Epochs")
+plt.ylabel("Loss")
+plt.title("Training vs Test Loss Curves (Underfit, Good Fit, Overfit)")
+plt.legend()
+plt.grid(True)
+plt.show()
