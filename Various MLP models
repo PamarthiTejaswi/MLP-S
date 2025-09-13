@@ -1,0 +1,4 @@
+Consider the dataset that is formed by using the equation y=x^2+ϵ 
+and trained for a) Very small MLP (underfits)
+b) Medium MLP (fits well)
+c) Huge MLP (overfits)
